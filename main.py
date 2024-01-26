@@ -11,8 +11,12 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get("https://www.neuralnine.com/")
 driver.maximize_window()
 
-links = driver.find_element("xpath", "//a[@href]")
+links = driver.find_elements("xpath", "//a[@href]")
 for link in links:
     if "Books" in link.get_attribute("innerHTML"):
         link.click()
         break
+    
+    
+
+book_links = driver.find_elements("xpath","//div[contains(@class, 'elementor-column-wrap')][.//h2[text()[contains(., '7 in 1')]]]")
